@@ -16,7 +16,11 @@
 //------------------------------------------------------------------------------
 #pragma once
 
-#include <cstdint>
+#if defined(__AVR__) || defined(ARDUINO_ARCH_AVR)
+  #include <stdint.h>
+#else
+  #include <cstdint>
+#endif
 
 // Указатель на функцию: событие + контекст
 using ActionCallback = void (*)(int event, void *context);
